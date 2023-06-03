@@ -1,3 +1,0 @@
-# megaman
-# megaman
-# megaman
