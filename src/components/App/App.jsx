@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
 import { StartMenu } from 'components';
+import { Battle } from 'components';
 
 export const App = () => {
   const [mode, setMode] = useState('start'); // on init we want to be in the start state
@@ -8,9 +9,11 @@ export const App = () => {
   return (
     <>
       <div className={styles.main}>
-        {mode === 'start' && <StartMenu />}
+        {mode === 'start' && (
+          <StartMenu onStartClick={() => setMode('battle')} />
+        )}
 
-        {mode === 'battle' && <>Battle Mode</>}
+        {mode === 'battle' && <Battle />}
 
         {mode === 'gameOver' && <>Game Over</>}
       </div>
