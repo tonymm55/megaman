@@ -6,12 +6,12 @@ export const Battle = () => {
     <div className={styles.main}>
       <div className={styles.opponent}>
         <div className={styles.summary}>
-          <PlayerSummary />
+          <PlayerSummary main />
         </div>
       </div>
       <div className={styles.user}>
         <div className={styles.summary}>
-          <PlayerSummary main />
+          <PlayerSummary />
         </div>
       </div>
     </div>
