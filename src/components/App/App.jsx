@@ -18,7 +18,7 @@ export const App = () => {
 
         {mode === 'gameOver' && <>Game Over </>}
       </div>
-      <h1>Megaman vs Samus</h1>
+      {/* <h1>Megaman vs Samus</h1> */}
       <div className="reserved"></div>
     </>
   );

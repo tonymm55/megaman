@@ -1,6 +1,6 @@
 import { PlayerSummary } from 'components';
 import { useState } from 'react';
-import { opponentStats, playerStats } from '../../shared/characters';
+import { opponentStats, playerStats } from '../../shared';
 import styles from './styles.module.css';
 import { BattleMenu } from '../BattleMenu/BattleMenu';
 
@@ -11,7 +11,7 @@ export const Battle = () => {
   );
 
   return (
-    <div className={styles.main}>
+    <>
       <div className={styles.opponent}>
         <div className={styles.summary}>
           <PlayerSummary
@@ -21,7 +21,22 @@ export const Battle = () => {
             maxHealth={opponentStats.maxHealth}
           />
         </div>
+
+        <div className={styles.characters}>
+          <div className={styles.gameHeader}>
+            {playerStats.name} vs {opponentStats.name}
+          </div>
+
+          <div className={styles.gameImages}>
+            <div className={styles.playerSprite}></div>
+            <img alt={playerStats.name} src={playerStats.img} />
+
+            <div className={styles.opponentSprite}></div>
+            <img alt={opponentStats.name} src={opponentStats.img} />
+          </div>
+        </div>
       </div>
+
       <div className={styles.user}>
         <div className={styles.summary}>
           <PlayerSummary
@@ -32,15 +47,16 @@ export const Battle = () => {
             maxHealth={playerStats.maxHealth}
           />
         </div>
+        <div className={styles.hud}>
+          <div className={styles.hudChild}>
+            <BattleMenu
+              onAttack={() => console.log('Attack!')}
+              onMagic={() => console.log('Magic!')}
+              onHeal={() => console.log('Heal!')}
+            />
+          </div>
+        </div>
       </div>
-
-      <div className={styles.hudChild}>
-        <BattleMenu
-          onAttack={() => console.log('Attack!')}
-          onMagic={() => console.log('Magic!')}
-          onHeal={() => console.log('Heal!')}
-        />
-      </div>
-    </div>
+    </>
   );
 };
