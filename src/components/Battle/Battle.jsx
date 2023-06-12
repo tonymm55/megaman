@@ -1,14 +1,14 @@
-import { PlayerSummary } from 'components';
-import { useState } from 'react';
-import { opponentStats, playerStats } from '../../shared';
 import styles from './styles.module.css';
-import { BattleMenu } from '../BattleMenu/BattleMenu';
+import { useEffect, useState } from 'react';
+import { BattleAnnouncer, BattleMenu, PlayerSummary } from 'components';
+import { opponentStats, playerStats } from '../../shared';
 
 export const Battle = () => {
   const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
   const [opponentHealth, setOpponentHealth] = useState(
     opponentStats.maxHealth
   );
+  const [announcerMessage, setAnnouncerMessage] = useState('');
 
   return (
     <>
@@ -47,7 +47,16 @@ export const Battle = () => {
             maxHealth={playerStats.maxHealth}
           />
         </div>
+
         <div className={styles.hud}>
+          <div className={styles.hudChild}>
+            <BattleAnnouncer
+              message={
+                announcerMessage || `What will ${playerStats.name} do?`
+              }
+            />
+          </div>
+
           <div className={styles.hudChild}>
             <BattleMenu
               onAttack={() => console.log('Attack!')}

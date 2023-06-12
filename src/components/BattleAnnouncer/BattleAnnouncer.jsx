@@ -1,3 +1,4 @@
+import { useTypedMessage } from '../../hooks';
 import styles from './styles.module.css';
 
 export const BattleAnnouncer = ({ message }) => {

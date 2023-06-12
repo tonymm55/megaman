@@ -1,4 +1,4 @@
-import { wait } from 'shared';
+import { wait } from '../shared';
 import { useState, useEffect } from 'react';
 
 export const useTypedMessage = message => {

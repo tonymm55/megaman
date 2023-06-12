@@ -6,8 +6,8 @@ export const playerStats = {
 
   magic: 32,
   attack: 50,
-  defense: 30,
-  magicDefense: 30,
+  defence: 30,
+  magicDefence: 30,
 };
 export const opponentStats = {
   level: 44,
@@ -17,6 +17,6 @@ export const opponentStats = {
 
   magic: 50,
   attack: 32,
-  defense: 20,
-  magicDefense: 48,
+  defence: 20,
+  magicDefence: 48,
 };
