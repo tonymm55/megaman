@@ -1,14 +1,29 @@
 import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
+import { useAIOpponent, useBattleSequence } from '../../hooks';
+import { opponentStats, playerStats, wait } from '../../shared';
 import { BattleAnnouncer, BattleMenu, PlayerSummary } from 'components';
-import { opponentStats, playerStats } from '../../shared';
 
 export const Battle = () => {
-  const [playerHealth, setPlayerHealth] = useState(playerStats.maxHealth);
-  const [opponentHealth, setOpponentHealth] = useState(
-    opponentStats.maxHealth
-  );
-  const [announcerMessage, setAnnouncerMessage] = useState('');
+  const [sequence, setSequence] = useState({});
+
+  const {
+    turn,
+    inSequence,
+    playerHealth,
+    opponentHealth,
+    announcerMessage,
+    playerAnimation,
+    opponentAnimation,
+  } = useBattleSequence(sequence);
+
+  const aiChoice = useAIOpponent(turn);
+
+  useEffect(() => {
+    if (aiChoice && turn === 1 && !inSequence) {
+      setSequence({ turn, mode: aiChoice });
+    }
+  }, [turn, aiChoice, inSequence]);
 
   return (
     <>
@@ -28,11 +43,21 @@ export const Battle = () => {
           </div>
 
           <div className={styles.gameImages}>
-            <div className={styles.playerSprite}></div>
-            <img alt={playerStats.name} src={playerStats.img} />
+            <div className={styles.playerSprite}>
+              <img
+                alt={playerStats.name}
+                src={playerStats.img}
+                className={styles[playerAnimation]}
+              />
+            </div>
 
-            <div className={styles.opponentSprite}></div>
-            <img alt={opponentStats.name} src={opponentStats.img} />
+            <div className={styles.opponentSprite}>
+              <img
+                alt={opponentStats.name}
+                src={opponentStats.img}
+                className={styles[opponentAnimation]}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -59,9 +84,9 @@ export const Battle = () => {
 
           <div className={styles.hudChild}>
             <BattleMenu
-              onAttack={() => console.log('Attack!')}
-              onMagic={() => console.log('Magic!')}
-              onHeal={() => console.log('Heal!')}
+              onAttack={() => setSequence({ turn, mode: 'attack' })}
+              onMagic={() => setSequence({ turn, mode: 'magic' })}
+              onHeal={() => setSequence({ turn, mode: 'heal' })}
             />
           </div>
         </div>
