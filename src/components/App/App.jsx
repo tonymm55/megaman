@@ -1,26 +1,36 @@
-import { useState } from 'react';
 import styles from './styles.module.css';
-import { StartMenu } from 'components';
-import { Battle } from 'components';
-// import { GameOver } from 'components';
+import { useEffect, useState } from 'react';
+import { Battle, EndMenu, StartMenu } from 'components';
 
 export const App = () => {
+  const [winner, setWinner] = useState();
   const [mode, setMode] = useState('start'); // on init we want to be in the start state
 
+  useEffect(() => {
+    if (mode === 'battle') {
+      setWinner(undefined);
+    }
+  }, [mode]);
+
   return (
-    <>
-      <div className={styles.main}>
-        {mode === 'start' && (
-          <StartMenu onStartClick={() => setMode('battle')} />
-        )}
+    <div className={styles.main}>
+      {mode === 'start' && (
+        <StartMenu onStartClick={() => setMode('battle')} />
+      )}
 
-        {mode === 'battle' && <Battle />}
+      {mode === 'battle' && (
+        <Battle
+          onGameEnd={winner => {
+            setWinner(winner);
+            setMode('gameOver');
+          }}
+        />
+      )}
 
-        {mode === 'gameOver' && <>Game Over </>}
-      </div>
-      {/* <h1>Megaman vs Samus</h1> */}
-      <div className="reserved"></div>
-    </>
+      {mode === 'gameOver' && !!winner && (
+        <EndMenu winner={winner} onStartClick={() => setMode('battle')} />
+      )}
+    </div>
   );
 };
 
