@@ -26,7 +26,6 @@ export const useBattleSequence = sequence => {
     const { mode, turn } = sequence;
 
     if (mode) {
-      //bug fix from ChatGPT
       const attacker = turn === 0 ? playerStats : opponentStats;
       const receiver = turn === 0 ? opponentStats : playerStats;
 
@@ -58,6 +57,7 @@ export const useBattleSequence = sequence => {
               ? setOpponentAnimation('static')
               : setPlayerAnimation('static');
             setAnnouncerMessage(`${receiver.name} felt that!`);
+
             turn === 0
               ? setOpponentHealth(h => (h - damage > 0 ? h - damage : 0))
               : setPlayerHealth(h => (h - damage > 0 ? h - damage : 0)); // We don't want a negative HP.
@@ -99,7 +99,7 @@ export const useBattleSequence = sequence => {
             turn === 0
               ? setOpponentAnimation('static')
               : setPlayerAnimation('static');
-            setAnnouncerMessage(`${receiver.name} is dazed & confused!!`);
+            setAnnouncerMessage(`${receiver.name} is dazed & confused!`);
             turn === 0
               ? setOpponentHealth(h => (h - damage > 0 ? h - damage : 0))
               : setPlayerHealth(h => (h - damage > 0 ? h - damage : 0)); // We don't want a negative HP.
@@ -133,7 +133,7 @@ export const useBattleSequence = sequence => {
               : setOpponentAnimation('static');
             await wait(500);
 
-            setAnnouncerMessage(`${attacker.name} has recovered health.`);
+            setAnnouncerMessage(`${attacker.name} has recovered health!`);
             turn === 0
               ? setPlayerHealth(h =>
                   h + recovered <= attacker.maxHealth
@@ -147,10 +147,10 @@ export const useBattleSequence = sequence => {
                 ); // We don't want to set HP more than the max
             await wait(2500);
 
-            setAnnouncerMessage(`Now it's ${receiver.name}'s turn!`);
+            setAnnouncerMessage(`Now it's the turn of ${receiver.name}!`);
             await wait(1500);
 
-            setTurn(turn === 0 ? 1 : 0);
+            setTurn(turn === 0 ? 1 : 0); //different in video
             setInSequence(false);
           })();
 
