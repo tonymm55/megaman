@@ -12,7 +12,7 @@ To build a one player turn based AI game using ReactJS only.
 
 ## Screenshots
 
-![Desktop](src/assets/Screenshot 2023-07-28 115758.jpg)
+![Desktop](react-megaman/src/assets/Screenshot 2023-07-28 115758.jpg)
 
 **Desktop Version Only**
 
