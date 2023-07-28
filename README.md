@@ -12,7 +12,7 @@ To build a one player turn based AI game using ReactJS only.
 
 ## Screenshots
 
-![Mobile Version](vite-project/Assets/CatScreen.png)
+![Desktop](react-megaman/src/assets/react.svg)
 
 **Desktop Version Only**
 
