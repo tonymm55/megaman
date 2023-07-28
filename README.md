@@ -1,14 +1,14 @@
 # React Turn Based Game Application
 
-This project is a tutorial delivered by PortExe [YouTube](https://www.youtube.com/watch?v=r7Z7R25spkE). I'm working through this tutorial to expand my knowledge in ReactJS.
+This project is a tutorial delivered by PortExe [YouTube](https://www.youtube.com/watch?v=r7Z7R25spkE). I'm completed this tutorial to expand my knowledge in ReactJS.
 
 ## Tutorial / Project Description 
 
-To build a mobile application (simple shopping list) that is linked to a realtime database on Firebase.
+To build a one player turn based AI game using ReactJS only.
 
 **Brief:**
-* Build a JavaScript mobile application that allows users to write a shopping list that has CRUD features.
-* Build on the basic application to learn more about developing JS apps whilst learning the features of Firebase.
+* Build a React game application that allows user to play against an AI Opponent (Samus).
+* Build on the basic application to learn more about developing React apps whilst learning about Hooks and state.
 
 ## Screenshots
 
