@@ -1,6 +1,6 @@
 # React Turn Based Game Application
 
-This project is a tutorial delivered by PortExe [YouTube] (https://www.youtube.com/watch?v=r7Z7R25spkE). I'm working through this tutorial to expand my knowledge in ReactJS.
+This project is a tutorial delivered by PortExe [YouTube](https://www.youtube.com/watch?v=r7Z7R25spkE). I'm working through this tutorial to expand my knowledge in ReactJS.
 
 ## Tutorial / Project Description 
 
